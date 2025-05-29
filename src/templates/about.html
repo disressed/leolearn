@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}О нас - LEO.ru{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1>Изучайте английский с LEO.ru</h1>
+            <p class="subtitle">Превращаем обучение в увлекательное путешествие</p>
+        </div>
+    </div>
+
+    <div class="mission-section">
+        <div class="mission-card">
+            <div class="mission-icon">🌍</div>
+            <h2>Наша миссия</h2>
+            <p>Сделать качественное образование доступным для всех</p>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-title">Курсов</div>
+            <div class="stat-bar"></div>
+            <p>Для всех уровней подготовки</p>
+        </div>
+        
+        <!-- Новая карточка с Node.js статистикой -->
+        <div class="stat-card">
+            <div class="stat-number" id="node-users">Загрузка...</div>
+            <div class="stat-title">Пользователей (Node)</div>
+            <div class="stat-bar"></div>
+            <p>Статистика в реальном времени</p>
+        </div>
+    </div>
+        
+        <div class="stat-card">
+            <div class="stat-number">98%</div>
+            <div class="stat-title">Успеха</div>
+            <div class="stat-bar"></div>
+            <p>Достигли поставленных целей</p>
+        </div>
+    </div>
+
+    <div class="locations-section">
+        <h2>Наши офисы</h2>
+        <div class="location-cards">
+            <div class="location-card">
+                <div class="city">Москва</div>
+                <div class="address">ул. Тверская, д. 1</div>
+                <div class="phone">+7 495 123-45-67</div>
+            </div>
+            <div class="location-card">
+                <div class="city">Санкт-Петербург</div>
+                <div class="address">Невский проспект, д. 10</div>
+                <div class="phone">+7 812 987-65-43</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

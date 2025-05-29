@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Отзывы - LEO.ru{% endblock %}
+
+{% block content %}
+<section class="reviews-section">
+    <div class="reviews-header">
+        <h2 class="section-title">Отзывы наших студентов</h2>
+        <p class="section-subtitle">Более 10 000 человек уже улучшили свой английский с LEO.ru</p>
+    </div>
+
+    <div class="reviews-grid">
+        <!-- Отзывы будут отображаться здесь -->
+        {% for review in reviews %}
+        <article class="review-card">
+            <div class="user-meta">
+                <img src="{{ url_for('static', filename='img/avatar1.jpg') }}" alt="Пользователь" class="user-avatar">
+                <div class="user-info">
+                    <h3 class="user-name">{{ review.name }}</h3>
+                    <div class="user-rating">
+                        {% for _ in range(review.rating) %}★{% endfor %}
+                        {% for _ in range(5 - review.rating) %}☆{% endfor %}
+                        <span class="rating-text">({{ review.rating }}/5)</span>
+                    </div>
+                </div>
+            </div>
+            <p class="review-text">{{ review.text }}</p>
+            <div class="review-footer">
+                <span class="review-date">{{ review.date }}</span>
+                <span class="review-course">Курс: {{ review.course }}</span>
+            </div>
+                <!-- Кнопка удаления (только для администраторов) -->
+    {% if user and user.is_admin %}
+    <form action="{{ url_for('delete_review', id=review.id) }}" method="POST" style="margin-top: 10px;">
+        <button type="submit" class="delete-btn">Удалить</button>
+    </form>
+    {% endif %}
+    
+        </article>
+        {% endfor %}
+    </div>
+
+    <div class="add-review">
+        <h3 class="form-title">Оставьте свой отзыв</h3>
+        <form class="review-form" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <select name="course" required>
+                        <option value="">Выберите курс</option>
+                        <option>Начальный уровень</option>
+                        <option>Средний уровень</option>
+                        <option>Продвинутый уровень</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="rating-stars">
+                <span class="star" data-value="1">☆</span>
+                <span class="star" data-value="2">☆</span>
+                <span class="star" data-value="3">☆</span>
+                <span class="star" data-value="4">☆</span>
+                <span class="star" data-value="5">☆</span>
+                <input type="hidden" name="rating" id="rating-value" required>
+            </div>
+
+            <textarea name="review" placeholder="Напишите ваш отзыв..." rows="5" required></textarea>
+            <button type="submit" class="submit-btn">Отправить отзыв <span class="icon">✉️</span></button>
+        </form>
+    </div>
+</section>
+<script src="{{ url_for('static', filename='js/reviews.js') }}" defer></script>
+{% endblock %}
