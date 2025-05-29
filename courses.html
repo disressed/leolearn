@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Курсы - LEO.ru{% endblock %}
+
+{% block content %}
+<section class="courses-section">
+    <h2 class="section-title">Наши учебные программы</h2>
+    <p class="section-subtitle">Выберите подходящий уровень и начните обучение</p>
+    
+    <div class="courses-grid">
+        <!-- Начальный уровень -->
+        <div class="course-card">
+            <div class="course-header">
+                <i class="fas fa-seedling course-icon"></i>
+                <h3>Начальный уровень</h3>
+                <div class="course-duration">2 месяца</div>
+            </div>
+            <div class="course-body">
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Основы грамматики</li>
+                    <li><i class="fas fa-check"></i> Повседневные фразы</li>
+                    <li><i class="fas fa-check"></i> Произношение</li>
+                    <li><i class="fas fa-check"></i> Базовый словарь</li>
+                </ul>
+                <div class="course-actions">
+                    <button class="enroll-btn" onclick="handleEnrollment('Начальный уровень')">Поступить</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Средний уровень -->
+        <div class="course-card">
+            <div class="course-header">
+                <i class="fas fa-language course-icon"></i>
+                <h3>Средний уровень</h3>
+                <div class="course-duration">3 месяца</div>
+            </div>
+            <div class="course-body">
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Деловое общение</li>
+                    <li><i class="fas fa-check"></i> Идиомы</li>
+                    <li><i class="fas fa-check"></i> Аудирование</li>
+                    <li><i class="fas fa-check"></i> Чтение литературы</li>
+                </ul>
+                <div class="course-actions">
+                    <button class="enroll-btn" onclick="handleEnrollment('Средний уровень')">Поступить</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Продвинутый уровень -->
+        <div class="course-card">
+            <div class="course-header">
+                <i class="fas fa-chart-line course-icon"></i>
+                <h3>Продвинутый уровень</h3>
+                <div class="course-duration">4 месяца</div>
+            </div>
+            <div class="course-body">
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Бизнес-английский</li>
+                    <li><i class="fas fa-check"></i> Презентации</li>
+                    <li><i class="fas fa-check"></i> Переговоры</li>
+                    <li><i class="fas fa-check"></i> Профессиональная лексика</li>
+                </ul>
+                <div class="course-actions">
+                    <button class="enroll-btn" onclick="handleEnrollment('Продвинутый уровень')">Поступить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения записи -->
+    <div id="enrollmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Подтверждение записи</h3>
+            <p>Вы уверены, что хотите записаться на курс <span id="courseTitle"></span>?</p>
+            <form id="enrollForm" method="GET" action="">
+                <button id="confirmEnroll" type="submit">Подтвердить</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function handleEnrollment(courseName) {
+            const courseTitleSpan = document.getElementById('courseTitle');
+            courseTitleSpan.textContent = courseName;
+            document.getElementById('enrollForm').action = `/enroll/${courseName}`;
+            document.getElementById('enrollmentModal').style.display = 'block';
+
+            document.querySelector('.close').onclick = function() {
+                document.getElementById('enrollmentModal').style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+                const modal = document.getElementById('enrollmentModal');
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Ресурсы - LEO.ru{% endblock %}
+{% block content %}
+<section class="resources-section">
+    <h2 class="section-title">Русскоязычные ресурсы для изучения английского</h2>
+    <p class="section-subtitle">Полезные сайты с материалами на русском языке</p>
+
+    <div class="resources-grid">
+        <!-- EnglishDom -->
+        <div class="resource-card">
+            <div class="resource-icon">
+                <span style="font-size: 2rem;">🌐</span>
+            </div>
+            <h3>ILS school</h3>
+            <ul class="resource-list">
+                <li>Онлайн-курсы от A1 до C2</li>
+                <li>Видеоуроки с русскоязычными преподавателями</li>
+                <li>Тесты и тренажеры грамматики</li>
+            </ul>
+            <a href="https://ils-school.com/online-kursy-yazykov"  
+               target="_blank" 
+               class="resource-btn"
+               rel="noopener noreferrer">
+                Перейти
+                <span class="arrow-icon">→</span>
+            </a>
+        </div>
+
+        <!-- Skyeng -->
+        <div class="resource-card">
+            <div class="resource-icon">
+                <span style="font-size: 2rem;">🗣️</span>
+            </div>
+            <h3>Skyeng</h3>
+            <ul class="resource-list">
+                <li>Индивидуальные уроки с носителями</li>
+                <li>Блог с разбором грамматики и лексики</li>
+                <li>Приложение для изучения слов</li>
+            </ul>
+            <a href="https://skyeng.ru/"  
+               target="_blank" 
+               class="resource-btn"
+               rel="noopener noreferrer">
+                Перейти
+                <span class="arrow-icon">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,116 @@
+<!-- course_details.html - обновленный клиентский код -->
+{% extends "base.html" %}
+{% block title %}Курс: {{ course_name }} - LEO.ru{% endblock %}
+{% block content %}
+<div class="course-detail">
+  <h2>{{ course_name }}</h2>
+  
+  <!-- Мета-информация -->
+  <div class="course-meta">
+    <p><i class="fas fa-clock"></i> Длительность: {{ course_info.duration }} часов</p>
+    <p><i class="fas fa-user-tie"></i> Преподаватель: {{ course_info.teacher }}</p>
+  </div>
+  
+  <!-- Прогресс -->
+  <div class="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: {{ percentage }}%">
+        <div class="progress-text">{{ percentage }}%</div>
+      </div>
+    </div>
+    <div class="progress-stats">
+      Прогресс: {{ completed_count }} из {{ total_lessons }} уроков завершено
+      <span class="progress-percentage">({{ percentage }}%)</span>
+    </div>
+  </div>
+  
+  <!-- Уроки -->
+  <div class="lesson-list">
+    {% for lesson in course_info["lessons"] %}
+    <div class="lesson-card {% if lesson.completed %}completed{% endif %}" id="lesson-{{ lesson.id }}">
+      <h3>{{ loop.index }}. {{ lesson.title }}</h3>
+      {% if not lesson.completed %}
+        <form action="{{ url_for('complete_lesson', course_name=course_name, lesson_id=lesson.id) }}" method="POST" class="complete-lesson-form">
+          <button type="submit" class="complete-btn">Завершить урок</button>
+        </form>
+      {% else %}
+        <span class="completed-badge"><i class="fas fa-check-circle"></i> Завершено</span>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Обработка завершения урока с AJAX
+    document.querySelectorAll('.complete-lesson-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const button = form.querySelector('button');
+            button.disabled = true;
+            button.textContent = 'Обработка...';
+            
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Ошибка сети');
+            })
+            .then(data => {
+                if (data.success) {
+                    const lessonId = form.action.split('/').pop();
+                    const lessonCard = document.getElementById(`lesson-${lessonId}`);
+                    
+                    // Заменяем кнопку на статус "Завершено"
+                    const title = lessonCard.querySelector('h3').innerHTML;
+                    lessonCard.innerHTML = `
+                        <h3>${title}</h3>
+                        <span class="completed-badge"><i class="fas fa-check-circle"></i> Завершено</span>
+                    `;
+                    lessonCard.classList.add('completed');
+                    
+                    // Обновляем прогресс
+                    updateProgress();
+                    
+                    // Перезагружаем страницу через 0.5 секунды для обновления всех данных
+                    setTimeout(() => location.reload(), 500);
+                } else {
+                    alert(data.message || 'Урок уже завершен');
+                    button.disabled = false;
+                    button.textContent = 'Завершить урок';
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                button.disabled = false;
+                button.textContent = 'Завершить урок';
+                alert('Ошибка при завершении урока: ' + error.message);
+            });
+        });
+    });
+    
+    // Функция обновления прогресса
+    function updateProgress() {
+        fetch(`/update_progress/{{ course_name }}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                } else {
+                    document.getElementById('completed-count').textContent = data.completed_count;
+                    document.getElementById('progress-percentage').textContent = data.percentage;
+                }
+            })
+            .catch(error => console.error('Ошибка при обновлении прогресса:', error));
+    }
+});
+</script>
+{% endblock %}

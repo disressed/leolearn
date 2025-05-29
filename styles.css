@@ -1,0 +1,1808 @@
+/* Оригинальные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background: #555;
+}
+
+.login-link {
+    background: #4CAF50;
+}
+
+/* Стили для личного кабинета (не влияющие на основной дизайн) */
+.profile-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.profile-nav ul {
+    padding: 0;
+    list-style: none;
+}
+
+.profile-nav li {
+    margin: 10px 0;
+}
+
+.profile-nav a {
+    display: block;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    color: #333;
+    text-decoration: none;
+}
+
+.profile-nav a:hover {
+    background: #e9ecef;
+}
+
+/* Флеш-сообщения */
+.flash-success {
+    padding: 15px;
+    background: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.flash-danger {
+    padding: 15px;
+    background: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+/* Сохраняем оригинальные стили страниц */
+#about, #courses, #resources, #reviews, #login {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Стили для форм входа */
+#login form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #45a049;
+}
+/* Стили для страницы курсов */
+#courses {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.courses-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.course {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.course img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.course ul {
+    padding-left: 20px;
+    margin: 15px 0;
+}
+
+.course li {
+    margin: 8px 0;
+}
+
+.enroll-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.enroll-btn:hover {
+    background: #45a049;
+}
+
+.advantages-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.advantage-card {
+    padding: 20px;
+    background: #FADFAD;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.profession-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.profession-card {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.details-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.course, .advantage-card, .profession-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.main-footer {
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 50px;
+    color: #000; /* Черный цвет текста */
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #eee; /* Добавим разделительную линию */
+}
+
+.main-footer p {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-weight: 400; /* Более жирный шрифт */
+}
+
+/* Для фиксированного положения внизу */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1;
+}
+
+/* Стили для навигационного меню */
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+    background: #fff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+nav ul li {
+    list-style: none;
+    position: relative;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Эффект при наведении */
+nav ul li a:hover {
+    color: #2c3e50;
+    background: #f8f9fa;
+}
+
+/* Активная вкладка */
+nav ul li a.active {
+    color: #2c3e50;
+    font-weight: 600;
+    border-bottom: 3px solid #4CAF50;
+}
+
+/* Индикатор текущей страницы */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4CAF50;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Специальный стиль для кнопки входа */
+.login-link {
+    background: #4CAF50;
+    color: white !important;
+    padding: 10px 25px !important;
+    border-radius: 25px;
+    transition: transform 0.3s;
+}
+
+.login-link:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76,175,80,0.3);
+}
+
+/* Стили для страницы ресурсов */
+.resources-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.resource-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+}
+
+.resource-icon {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.resource-icon img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.resource-card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.resource-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #34495e;
+}
+
+.resource-list li:last-child {
+    border-bottom: none;
+}
+
+.resource-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    margin-top: auto;
+}
+
+.resource-btn:hover {
+    background: #45a049;
+    color: white;
+}
+
+.arrow-icon {
+    font-size: 1.2em;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.resource-btn:hover .arrow-icon {
+    transform: translateX(3px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resource-card {
+        margin: 0 15px;
+    }
+}
+
+/* Стили для страницы отзывов */
+.reviews-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+}
+
+.reviews-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2.8em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    color: #7f8c8d;
+    font-size: 1.2em;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.review-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.user-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 3px solid #4CAF50;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-name {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+.user-rating {
+    color: #f1c40f;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.rating-text {
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.review-text {
+    color: #34495e;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #95a5a6;
+}
+
+/* Форма добавления отзыва */
+.add-review {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.form-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group input,
+.form-group select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.rating-stars {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.star {
+    color: #ddd;
+    transition: all 0.2s;
+    margin: 0 5px;
+}
+
+.star:hover,
+.star.active {
+    color: #f1c40f;
+    transform: scale(1.2);
+}
+
+.submit-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    margin: 20px auto 0;
+}
+
+.submit-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76,175,80,0.3);
+}
+
+.icon {
+    margin-left: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .section-title {
+        font-size: 2em;
+    }
+}
+
+
+/* Стили для страницы "О нас" */
+.about-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 3rem;
+    color: #3498db;
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+.stat-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.stat-bar {
+    width: 50px;
+    height: 3px;
+    background: #3498db;
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+.team-section {
+    margin: 5rem 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.team-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 3px solid #3498db;
+}
+
+.experience {
+    background: #3498db;
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.locations-section {
+    margin: 4rem 0;
+}
+
+.map-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.location-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.location-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateX(10px);
+}
+
+.city {
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.address, .phone {
+    color: #7f8c8d;
+    margin: 0.3rem 0;
+}
+
+.fake-map {
+    background: #f0f0f0;
+    border-radius: 15px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7f8c8d;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* Цветовая схема */
+:root {
+    --main-green: #4CAF50;
+    --dark-green: #45a049;
+    --light-green: #e8f5e9;
+}
+
+/* Герой-баннер */
+.hero-banner {
+    background: linear-gradient(135deg, var(--main-green), var(--dark-green));
+}
+
+/* Статистика */
+.stat-number {
+    color: var(--main-green);
+}
+
+.stat-bar {
+    background: var(--main-green);
+}
+
+/* Локации */
+.location-card {
+    background: var(--light-green);
+    border-left: 4px solid var(--main-green);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateX(10px);
+}
+
+.city {
+    color: var(--main-green);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Миссия */
+.mission-icon {
+    font-size: 3rem;
+    color: var(--main-green);
+    margin-bottom: 1rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* Добавлены новые иконки */
+.fa-laptop-code {
+    color: #4CAF50;
+}
+
+/* Улучшены отступы */
+.course-features li {
+    padding: 12px 0;
+    font-size: 0.95rem;
+}
+
+/* Адаптация для 4 карточек */
+@media (min-width: 1024px) {
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .course-duration {
+        font-size: 0.8rem;
+    }
+    
+    .enroll-btn {
+        padding: 10px 25px;
+    }
+}
+
+.course-header {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* Удалены стили для .course-progress и .progress-bar */
+
+
+
+/* Стили для курсов */
+.courses-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.course-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #4CAF50;
+    margin-bottom: 20px;
+}
+
+.course-icon {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.course-duration {
+    color: #757575;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.course-progress {
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.course-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.course-features li {
+    padding: 10px 0;
+    color: #424242;
+    display: flex;
+    align-items: center;
+}
+
+.course-features i {
+    color: #4CAF50;
+    margin-right: 10px;
+}
+
+.course-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.enroll-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.enroll-btn:hover {
+    background: #45a049;
+    box-shadow: 0 5px 15px rgba(76,175,80,0.3);
+}
+
+.details-link {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.details-link:hover {
+    color: #45a049;
+}
+
+.details-link i {
+    margin-left: 5px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+#confirmEnroll {
+    background: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.auth-section {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.auth-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-btn:hover {
+    background: #45a049;
+}
+
+.auth-section p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-section a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.auth-section a:hover {
+    text-decoration: underline;
+}
+
+/* Добавлены стили для прогресса */
+.progress-bar {
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: #4CAF50;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* Стили для индивидуального прогресса */
+.stat-item strong {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Прогресс */
+.progress-bar {
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    margin: 20px 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4CAF50;
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+}
+
+/* Уроки */
+.lesson-list {
+    margin-top: 30px;
+}
+
+.lesson-card {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.lesson-card:hover {
+    background: #f1f1f1;
+}
+
+.complete-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.complete-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* Прогресс */
+.progress-bar {
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    margin: 20px 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4CAF50;
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    transition: width 0.3s;
+}
+
+/* Уроки */
+.lesson-card {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.lesson-card:hover {
+    background: #f1f1f1;
+}
+
+.complete-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.complete-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76,175,80,0.3);
+}
+
+
+.lesson-card.completed {
+  background: #f0f8ff;
+}
+.completed-badge {
+  color: #4CAF50;
+}
+/* Добавить в styles.css */
+.progress-container {
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 30px;
+  background: #f0f0f0;
+  border-radius: 15px;
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4CAF50;
+  position: relative;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+.progress-stats {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Стили для уроков */
+.lesson-list {
+  margin-top: 30px;
+}
+
+.lesson-card {
+  background: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 5px solid #4CAF50;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.lesson-card.completed {
+  background: #f0f8ff;
+  border-left-color: #3498db;
+}
+
+.completed-badge {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+/* Добавить в styles.css */
+.progress-container {
+  margin-bottom: 20px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.progress-bar {
+  height: 30px;
+  background: #e9ecef;
+  border-radius: 15px;
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #2E7D32);
+  position: relative;
+  transition: width 0.5s ease;
+  min-width: 30px;
+}
+
+.progress-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+.progress-stats {
+  text-align: center;
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+/* Стили для уроков */
+.lesson-list {
+  margin-top: 30px;
+}
+
+.lesson-card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 5px solid #4CAF50;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.lesson-card.completed {
+  background: #f0f8ff;
+  border-left-color: #2196F3;
+}
+
+.completed-badge {
+  color: #4CAF50;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.complete-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.complete-btn:hover {
+  background: #3d8b40;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+
+/* Упрощенный прогресс */
+.progress-info {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-left: 4px solid #4CAF50;
+}
+
+.progress-info p {
+  margin: 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-info .fas {
+  color: #4CAF50;
+  font-size: 1.2em;
+}
+
+.progress-percentage {
+  background: #4CAF50;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 0.9em;
+}
+
+/* Остальные стили остаются без изменений */
+.lesson-list {
+  margin-top: 30px;
+}
+
+.lesson-card {
+  background: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 5px solid #4CAF50;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.lesson-card.completed {
+  background: #f0f8ff;
+  border-left-color: #3498db;
+}
+
+.completed-badge {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.complete-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.complete-btn:hover {
+  background: #3d8b40;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Стили для информации о курсе */
+.course-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4CAF50;
+}
+
+.course-info h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.course-info p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-info a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.course-info a:hover {
+    text-decoration: underline;
+}
+
+.progress-percentage {
+    background: #4CAF50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+/* Прогресс */
+.progress-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4CAF50;
+}
+
+.progress-info p {
+    margin: 0;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-info .fas {
+    color: #4CAF50;
+    font-size: 1.2em;
+}
+
+/* Стили для уроков */
+.lesson-list {
+    margin-top: 30px;
+}
+
+.lesson-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.lesson-card.completed {
+    background: #f0f8ff;
+    border-left-color: #2196F3;
+}
+
+.completed-badge {
+    color: #4CAF50;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.complete-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.complete-btn:hover {
+    background: #3d8b40;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Стили для информации о курсе */
+.course-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4CAF50;
+}
+
+.course-info h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.course-info p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-info a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.course-info a:hover {
+    text-decoration: underline;
+}
+
+.progress-percentage {
+    background: #4CAF50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+/* Прогресс */
+.progress-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4CAF50;
+}
+
+.progress-info p {
+    margin: 0;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-info .fas {
+    color: #4CAF50;
+    font-size: 1.2em;
+}
+
+/* Стили для уроков */
+.lesson-list {
+    margin-top: 30px;
+}
+
+.lesson-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.lesson-card.completed {
+    background: #f0f8ff;
+    border-left-color: #2196F3;
+    transform: scale(1.02);
+}
+
+.completed-badge {
+    color: #4CAF50;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.complete-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.complete-btn:hover {
+    background: #3d8b40;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.complete-lesson-form {
+    margin-top: 15px;
+}
+
+/* Анимация обновления */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.lesson-card.completed {
+    animation: pulse 0.5s ease;
+}
+
+
+/* styles.css - обновленные стили */
+/* Прогресс */
+.progress-container {
+  margin-bottom: 20px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.progress-bar {
+  height: 30px;
+  background: #e9ecef;
+  border-radius: 15px;
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #2E7D32);
+  position: relative;
+  transition: width 0.5s ease;
+  min-width: 30px;
+}
+
+.progress-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+.progress-stats {
+  text-align: center;
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+/* Стили для уроков */
+.lesson-list {
+  margin-top: 30px;
+}
+
+.lesson-card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 5px solid #4CAF50;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.lesson-card.completed {
+  background: #f0f8ff;
+  border-left-color: #2196F3;
+  transform: scale(1.02);
+}
+
+.completed-badge {
+  color: #4CAF50;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.complete-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.complete-btn:hover {
+  background: #3d8b40;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
