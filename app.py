@@ -1,4 +1,3 @@
-# app.py - обновленный серверный код
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -27,36 +26,277 @@ class Review(db.Model):
     text = db.Column(db.Text, nullable=False)
     date = db.Column(db.String(20), default=datetime.now().strftime("%d.%m.%Y"))
 
-# Данные курсов
 COURSE_DATA = {
     "Начальный уровень": {
         "duration": 48,
         "teacher": "Анна Петрова",
         "lessons": [
-            {"id": 1, "title": "Урок 1: Алфавит"},
-            {"id": 2, "title": "Урок 2: Глаголы"},
-            {"id": 3, "title": "Урок 3: Существительные"}
+            {
+                "id": 1,
+                "title": "Алфавит и базовые фразы",
+                "duration": 20,
+                "difficulty": "Начальная",
+                "type": "text",
+                "theory": "<p>Английский алфавит состоит из 26 букв. Каждая буква имеет своё название и звучание.</p><p>Основные фразы для знакомства:</p><ul><li>Hello! - Привет!</li><li>My name is... - Меня зовут...</li><li>Nice to meet you! - Приятно познакомиться!</li></ul>",
+                "assignment": "<p>Составьте 3 предложения о себе, используя изученные фразы.</p>"
+            },
+            {
+                "id": 2,
+                "title": "Глагол to be",
+                "duration": 25,
+                "difficulty": "Начальная",
+                "type": "choice",
+                "theory": "<p>Глагол <strong>to be</strong> (быть) - один из основных глаголов в английском языке. Его формы: am, is, are.</p><p>Правила использования:</p><ul><li>I <strong>am</strong> - Я есть</li><li>He/She/It <strong>is</strong> - Он/Она/Оно есть</li><li>You/We/They <strong>are</strong> - Ты/Вы/Мы/Они есть</li></ul>",
+                "assignment": "<p>Выберите правильную форму глагола to be:</p>",
+                "options": [
+                    "I ___ a student. (am)",
+                    "She ___ from London. (is)",
+                    "We ___ happy. (are)",
+                    "It ___ a book. (is)",
+                    "You ___ my friend. (are)"
+                ],
+                "answer": 0  # Индекс правильного ответа (0 для первого вопроса)
+            },
+            {
+                "id": 3,
+                "title": "Артикли a/an",
+                "duration": 30,
+                "difficulty": "Начальная",
+                "type": "choice",
+                "theory": "<p>Артикли <strong>a</strong> и <strong>an</strong> используются перед исчисляемыми существительными в единственном числе.</p><p>Правила:</p><ul><li><strong>a</strong> - перед словами, начинающимися с согласного звука</li><li><strong>an</strong> - перед словами, начинающимися с гласного звука</li></ul>",
+                "assignment": "<p>Выберите правильный артикль:</p>",
+                "options": [
+                    "___ apple (an)",
+                    "___ book (a)",
+                    "___ university (a)",
+                    "___ hour (an)",
+                    "___ car (a)"
+                ],
+                "answer": 0  # Индекс правильного ответа
+            }
         ]
     },
     "Средний уровень": {
         "duration": 72,
         "teacher": "Иван Сидоров",
         "lessons": [
-            {"id": 1, "title": "Урок 1: Идиомы"},
-            {"id": 2, "title": "Урок 2: Чтение"},
-            {"id": 3, "title": "Урок 3: Грамматика"}
+            {
+                "id": 1,
+                "title": "Present Simple",
+                "duration": 30,
+                "difficulty": "Средняя",
+                "type": "text",
+                "theory": "<p><strong>Present Simple</strong> используется для описания регулярных действий, привычек и общеизвестных фактов.</p><p>Образование: I/You/We/They + V1, He/She/It + V1 + s/es</p><p>Примеры:</p><ul><li>I work every day.</li><li>She plays tennis on weekends.</li><li>The sun rises in the east.</li></ul>",
+                "assignment": "<p>Напишите 5 предложений о своих ежедневных привычках, используя Present Simple.</p>"
+            },
+            {
+                "id": 2,
+                "title": "Past Simple",
+                "duration": 35,
+                "difficulty": "Средняя",
+                "type": "choice",
+                "theory": "<p><strong>Past Simple</strong> используется для описания действий, которые произошли в определенный момент в прошлом.</p><p>Образование: V2 для неправильных глаголов, V1 + ed для правильных.</p><p>Примеры:</p><ul><li>I visited London last year.</li><li>She bought a new car yesterday.</li><li>They went to the cinema on Friday.</li></ul>",
+                "assignment": "<p>Выберите правильную форму глагола в Past Simple:</p>",
+                "options": [
+                    "I ___ to school yesterday. (went)",
+                    "She ___ a letter last night. (wrote)",
+                    "We ___ dinner at 7 pm. (ate)",
+                    "He ___ his homework. (did)",
+                    "They ___ the movie. (watched)"
+                ],
+                "answer": 0  # Индекс правильного ответа
+            },
+            {
+                "id": 3,
+                "title": "Future Simple",
+                "duration": 40,
+                "difficulty": "Средняя",
+                "type": "choice",
+                "theory": "<p><strong>Future Simple</strong> используется для описания действий, которые произойдут в будущем.</p><p>Образование: will + V1</p><p>Примеры:</p><ul><li>I will call you tomorrow.</li><li>She will finish the project next week.</li><li>They will travel to Spain in summer.</li></ul>",
+                "assignment": "<p>Выберите правильную форму глагола в Future Simple:</p>",
+                "options": [
+                    "I ___ you later. (will call)",
+                    "She ___ the report. (will write)",
+                    "We ___ the meeting. (will attend)",
+                    "He ___ early. (will arrive)",
+                    "They ___ a new house. (will buy)"
+                ],
+                "answer": 0  # Индекс правильного ответа
+            }
         ]
     },
     "Продвинутый уровень": {
         "duration": 96,
         "teacher": "Мария Иванова",
         "lessons": [
-            {"id": 1, "title": "Урок 1: Бизнес-письма"},
-            {"id": 2, "title": "Урок 2: Переговоры"},
-            {"id": 3, "title": "Урок 3: Презентации"}
+            {
+                "id": 1,
+                "title": "Conditionals",
+                "duration": 45,
+                "difficulty": "Продвинутая",
+                "type": "text",
+                "theory": "<p><strong>Условные предложения</strong> выражают условие и его следствие.</p><p>Типы:</p><ul><li>Zero Conditional: If + Present, Present (общие истины)</li><li>First Conditional: If + Present, Future (реальные будущие ситуации)</li><li>Second Conditional: If + Past, would + V1 (маловероятные ситуации)</li><li>Third Conditional: If + Past Perfect, would have + V3 (невозможные прошлые ситуации)</li></ul>",
+                "assignment": "<p>Напишите по одному примеру для каждого типа условных предложений.</p>"
+            },
+            {
+                "id": 2,
+                "title": "Reported Speech",
+                "duration": 50,
+                "difficulty": "Продвинутая",
+                "type": "choice",
+                "theory": "<p><strong>Косвенная речь</strong> используется для передачи чьих-либо слов.</p><p>Основные изменения:</p><ul><li>Present Simple → Past Simple</li><li>Present Continuous → Past Continuous</li><li>will → would</li><li>can → could</li><li>today → that day</li><li>tomorrow → the next day</li></ul>",
+                "assignment": "<p>Выберите правильный вариант преобразования прямой речи в косвенную:</p>",
+                "options": [
+                    "She said, 'I am happy.' → She said that she ___ happy. (was)",
+                    "He said, 'I will come.' → He said that he ___. (would come)",
+                    "They said, 'We are working.' → They said that they ___. (were working)",
+                    "I said, 'I can help.' → I said that I ___. (could help)",
+                    "You said, 'It is raining.' → You said that it ___. (was raining)"
+                ],
+                "answer": 0  # Индекс правильного ответа
+            },
+            {
+                "id": 3,
+                "title": "Phrasal Verbs",
+                "duration": 55,
+                "difficulty": "Продвинутая",
+                "type": "choice",
+                "theory": "<p><strong>Фразовые глаголы</strong> состоят из глагола и частицы (предлога или наречия). Значение часто отличается от исходного глагола.</p><p>Примеры:</p><ul><li>look up - искать в словаре</li><li>give up - сдаваться</li><li>take off - взлетать (о самолете)</li><li>turn on - включать</li><li>put off - откладывать</li></ul>",
+                "assignment": "<p>Выберите правильный фразовый глагол для завершения предложения:</p>",
+                "options": [
+                    "Please ___ the light. It's dark. (turn on)",
+                    "Don't ___! You can do it! (give up)",
+                    "I need to ___ this word in the dictionary. (look up)",
+                    "The plane will ___ in 10 minutes. (take off)",
+                    "Let's ___ the meeting until tomorrow. (put off)"
+                ],
+                "answer": 0  # Индекс правильного ответа
+            }
         ]
     }
 }
+
+
+
+@app.route('/course/<course_name>/lesson/<int:lesson_id>', methods=['GET', 'POST'])
+def lesson(course_name, lesson_id):
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    
+    course_info = COURSE_DATA.get(course_name)
+    if not course_info:
+        flash('Курс не найден', 'danger')
+        return redirect(url_for('courses'))
+    
+    # Находим текущий урок
+    current_lesson = None
+    for l in course_info['lessons']:
+        if l['id'] == lesson_id:
+            current_lesson = l
+            break
+    
+    if not current_lesson:
+        flash('Урок не найден', 'danger')
+        return redirect(url_for('course_details', course_name=course_name))
+    
+    # Проверяем статус выполнения урока
+    email = session['user_email']
+    user = User.query.filter_by(email=email).first()
+    completed = is_lesson_completed(user, course_name, lesson_id)
+    
+    # Находим предыдущий и следующий уроки
+    lessons = course_info['lessons']
+    prev_lesson = next_lesson = None
+    current_index = next((i for i, l in enumerate(lessons) if l['id'] == lesson_id), -1)
+    
+    if current_index > 0:
+        prev_lesson = lessons[current_index - 1]
+    if current_index < len(lessons) - 1:
+        next_lesson = lessons[current_index + 1]
+    
+    # Обработка ответа на задание
+    if request.method == 'POST':
+        user_answer = request.form.get('answer')
+        if check_answer(current_lesson, user_answer):
+            mark_lesson_completed(user, course_name, lesson_id)
+            flash('Правильный ответ! Урок завершен', 'success')
+            completed = True
+        else:
+            flash('Неправильный ответ. Попробуйте еще раз', 'danger')
+    
+    return render_template('lesson.html',
+                          course_name=course_name,
+                          lesson=current_lesson,
+                          prev_lesson=prev_lesson,
+                          next_lesson=next_lesson,
+                          completed=completed)
+
+def is_lesson_completed(user, course_name, lesson_id):
+    if user.completed_lessons:
+        try:
+            completed = json.loads(user.completed_lessons)
+            return lesson_id in completed.get(course_name, [])
+        except:
+            return False
+    return False
+
+def mark_lesson_completed(user, course_name, lesson_id):
+    completed = {}
+    if user.completed_lessons:
+        try:
+            completed = json.loads(user.completed_lessons)
+        except:
+            pass
+    
+    if course_name not in completed:
+        completed[course_name] = []
+    
+    if lesson_id not in completed[course_name]:
+        completed[course_name].append(lesson_id)
+        user.completed_lessons = json.dumps(completed)
+        db.session.commit()
+
+def check_answer(lesson, user_answer):
+    if lesson['type'] == 'choice':
+        try:
+            # Проверяем, что выбранный ответ совпадает с правильным
+            return int(user_answer) == lesson.get('answer', -1)
+        except:
+            return False
+    return True  # Для текстовых всегда верно
+
+@app.route('/submit_assignment/<course_name>/<int:lesson_id>', methods=['POST'])
+def submit_assignment(course_name, lesson_id):
+    if not session.get('logged_in'):
+        return jsonify(success=False, error="Не авторизован"), 401
+        
+    email = session['user_email']
+    user = User.query.filter_by(email=email).first()
+    
+    # Загрузка файла задания (если есть)
+    if 'assignment_file' in request.files:
+        file = request.files['assignment_file']
+        if file.filename != '':
+            # Здесь должна быть логика сохранения файла
+            flash('Файл успешно загружен', 'success')
+    
+    # Отмечаем урок как выполненный
+    try:
+        completed_lessons = json.loads(user.completed_lessons) if user.completed_lessons else {}
+    except json.JSONDecodeError:
+        completed_lessons = {}
+        
+    if course_name not in completed_lessons:
+        completed_lessons[course_name] = []
+        
+    if lesson_id not in completed_lessons[course_name]:
+        completed_lessons[course_name].append(lesson_id)
+        user.completed_lessons = json.dumps(completed_lessons)
+        db.session.commit()
+        flash('Задание успешно отправлено!', 'success')
+        return jsonify(success=True)
+    else:
+        return jsonify(success=False, message="Задание уже было отправлено"), 400
 
 @app.route('/')
 def index():
