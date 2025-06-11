@@ -1,4 +1,3 @@
-<!-- profile.html - обновленный клиентский код -->
 {% extends "base.html" %}
 {% block title %}Личный кабинет - LEO.ru{% endblock %}
 {% block content %}
@@ -84,7 +83,6 @@ function updateProfileProgress() {
         });
 }
 
-// Вызовите эту функцию при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname === '/profile') {
         updateProfileProgress();
