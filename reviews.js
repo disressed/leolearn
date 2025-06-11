@@ -1,4 +1,4 @@
-// reviews.js - без изменений
+
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', function() {
     const btn = this.querySelector('button[type="submit"]');
@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
 
 // Модальное окно для записи на курс
 function handleEnrollment(courseName) {
