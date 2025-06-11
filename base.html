@@ -17,11 +17,11 @@
                 <li><a href="{{ url_for('resources') }}" {% if request.path == url_for('resources') %}class="active"{% endif %}>Ресурсы</a></li>
                 <li><a href="{{ url_for('about') }}" {% if request.path == url_for('about') %}class="active"{% endif %}>О нас</a></li>
                 {% if session.logged_in %}
-                    <li><a href="{{ url_for('profile') }}" {% if request.path == url_for('profile') %}class="active"{% endif %}>Профиль</a></li>
-                    <li><a href="{{ url_for('logout') }}">Выход</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('login') }}" class="login-link">Вход</a></li>
-                {% endif %}
+<li><a href="{{ url_for('profile') }}" {% if request.path == url_for('profile') %}class="active"{% endif %}>Профиль</a></li>
+<li><a href="{{ url_for('logout') }}">Выход</a></li>
+{% else %}
+<li><a href="{{ url_for('login') }}" class="login-link">Вход</a></li>
+{% endif %}
             </ul>
         </nav>
     </header>
