@@ -1,4 +1,4 @@
-<!-- course_details.html - обновленный клиентский код -->
+<!-- course_details.html-->
 {% extends "base.html" %}
 {% block title %}Курс: {{ course_name }} - LEO.ru{% endblock %}
 {% block content %}
@@ -25,20 +25,21 @@
   </div>
   
   <!-- Уроки -->
-  <div class="lesson-list">
+<div class="lesson-list">
     {% for lesson in course_info["lessons"] %}
     <div class="lesson-card {% if lesson.completed %}completed{% endif %}" id="lesson-{{ lesson.id }}">
-      <h3>{{ loop.index }}. {{ lesson.title }}</h3>
-      {% if not lesson.completed %}
-        <form action="{{ url_for('complete_lesson', course_name=course_name, lesson_id=lesson.id) }}" method="POST" class="complete-lesson-form">
-          <button type="submit" class="complete-btn">Завершить урок</button>
-        </form>
-      {% else %}
-        <span class="completed-badge"><i class="fas fa-check-circle"></i> Завершено</span>
-      {% endif %}
+        <h3>{{ loop.index }}. {{ lesson.title }}</h3>
+        <div class="lesson-info">
+            <span class="duration"><i class="fas fa-clock"></i> {{ lesson.duration }} мин</span>
+            <span class="difficulty"><i class="fas fa-signal"></i> {{ lesson.difficulty }}</span>
+        </div>
+        
+        <a href="{{ url_for('lesson', course_name=course_name, lesson_id=lesson.id) }}" 
+           class="start-btn">
+            <i class="fas fa-play-circle"></i> Начать урок
+        </a>
     </div>
     {% endfor %}
-  </div>
 </div>
 
 <script>
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const lessonId = form.action.split('/').pop();
                     const lessonCard = document.getElementById(`lesson-${lessonId}`);
                     
-                    // Заменяем кнопку на статус "Завершено"
+                    
                     const title = lessonCard.querySelector('h3').innerHTML;
                     lessonCard.innerHTML = `
                         <h3>${title}</h3>
